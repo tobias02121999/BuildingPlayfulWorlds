@@ -8,6 +8,7 @@ public class scr_cameraControl : MonoBehaviour {
     public Camera playerCamera2;
     public Camera playerCamera3;
     public Camera playerCamera4;
+    public Camera playerCamera5;
 
     private int activeCamera = 1;
 
@@ -16,6 +17,7 @@ public class scr_cameraControl : MonoBehaviour {
         playerCamera2.enabled = false;
         playerCamera3.enabled = false;
         playerCamera4.enabled = false;
+        playerCamera5.enabled = false;
 }
 
     private void Update()
@@ -38,6 +40,11 @@ public class scr_cameraControl : MonoBehaviour {
         if (Input.GetKey("4"))
         {
             activeCamera = 4;
+        }
+
+        if (Input.GetKey("5"))
+        {
+            activeCamera = 5;
         }
 
         if (activeCamera == 1)
@@ -72,6 +79,15 @@ public class scr_cameraControl : MonoBehaviour {
         else
         {
             playerCamera4.enabled = false;
+        }
+
+        if (activeCamera == 5)
+        {
+            playerCamera5.enabled = true;
+        }
+        else
+        {
+            playerCamera5.enabled = false;
         }
     }
 }
