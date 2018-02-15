@@ -14,8 +14,8 @@ public class scr_reloadBar : MonoBehaviour {
 
     private void Update()
     {
-        alarm = this.transform.parent.GetComponent<scr_playerShoot>().alarm;
-        alarmDuration = this.transform.parent.GetComponent<scr_playerShoot>().alarmDuration;
+        alarm = this.transform.parent.parent.GetComponent<scr_playerShoot>().alarm;
+        alarmDuration = this.transform.parent.parent.GetComponent<scr_playerShoot>().alarmDuration;
 
         sizeX = (alarm / alarmDuration) * sizeXMax;
 

@@ -4,90 +4,55 @@ using UnityEngine;
 
 public class scr_cameraControl : MonoBehaviour {
 
-    public Camera playerCamera1;
-    public Camera playerCamera2;
-    public Camera playerCamera3;
-    public Camera playerCamera4;
-    public Camera playerCamera5;
+    public Vector3 positionCamera0;
+    public Vector3 positionCamera1;
+    public Vector3 positionCamera2;
+    public float movementSpeed = 1f;
 
-    private int activeCamera = 1;
-
-	private void Start () {
-        playerCamera1.enabled = true;
-        playerCamera2.enabled = false;
-        playerCamera3.enabled = false;
-        playerCamera4.enabled = false;
-        playerCamera5.enabled = false;
-}
+    private Vector3 targetPositionVector;
+    private Vector3 targetRotationVector;
+    private int activeCamera = 0;
 
     private void Update()
     {
+        Vector3 playerPosition = this.transform.parent.parent.transform.position;
+
         if (Input.GetKey("1"))
         {
-            activeCamera = 1;
+            activeCamera = 0;
         }
 
         if (Input.GetKey("2"))
         {
+            activeCamera = 1;
+        }
+
+        if (Input.GetMouseButton(1))
+        {
             activeCamera = 2;
-        }
-
-        if (Input.GetKey("3"))
-        {
-            activeCamera = 3;
-        }
-
-        if (Input.GetKey("4"))
-        {
-            activeCamera = 4;
-        }
-
-        if (Input.GetKey("5"))
-        {
-            activeCamera = 5;
-        }
-
-        if (activeCamera == 1)
-        {
-            playerCamera1.enabled = true;
         } else
         {
-            playerCamera1.enabled = false;
+            if (activeCamera == 2)
+            {
+                activeCamera = 0;
+            }
         }
 
-        if (activeCamera == 2)
+        switch (activeCamera)
         {
-            playerCamera2.enabled = true;
-        } else
-        {
-            playerCamera2.enabled = false;
+            case 0:
+                targetPositionVector = playerPosition + (transform.forward * positionCamera0.x) + (transform.up * positionCamera0.y) + (transform.right * positionCamera0.z);
+                break;
+
+            case 1:
+                targetPositionVector = playerPosition + (transform.forward * positionCamera1.x) + (transform.up * positionCamera1.y) + (transform.right * positionCamera0.z);
+                break;
+
+            case 2:
+                targetPositionVector = playerPosition + (transform.forward * positionCamera2.x) + (transform.up * positionCamera2.y) + (transform.right * positionCamera2.z);
+                break;
         }
 
-        if (activeCamera == 3)
-        {
-            playerCamera3.enabled = true;
-        }
-        else
-        {
-            playerCamera3.enabled = false;
-        }
-
-        if (activeCamera == 4)
-        {
-            playerCamera4.enabled = true;
-        }
-        else
-        {
-            playerCamera4.enabled = false;
-        }
-
-        if (activeCamera == 5)
-        {
-            playerCamera5.enabled = true;
-        }
-        else
-        {
-            playerCamera5.enabled = false;
-        }
+        transform.position = Vector3.MoveTowards(transform.position, targetPositionVector, movementSpeed * Vector3.Distance(transform.position, targetPositionVector));
     }
 }

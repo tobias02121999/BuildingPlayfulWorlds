@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: fabe977e53f40c84cae2199b1aabd675
-timeCreated: 1518356523
+guid: b6b119aa9fef5754eb2d525040fbce42
+timeCreated: 1518694894
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,19 +9,29 @@ ModelImporter:
     100002: fattyFare_spaceShip:obj_chair
     100004: fattyFare_spaceShip:obj_pilot
     100006: fattyFare_spaceShip:obj_spaceShip
+    100008: pCube1
+    100010: pCube2
     400000: //RootNode
     400002: fattyFare_spaceShip:obj_chair
     400004: fattyFare_spaceShip:obj_pilot
     400006: fattyFare_spaceShip:obj_spaceShip
+    400008: pCube1
+    400010: pCube2
     2300000: fattyFare_spaceShip:obj_chair
     2300002: fattyFare_spaceShip:obj_pilot
     2300004: fattyFare_spaceShip:obj_spaceShip
+    2300006: pCube1
+    2300008: pCube2
     3300000: fattyFare_spaceShip:obj_chair
     3300002: fattyFare_spaceShip:obj_pilot
     3300004: fattyFare_spaceShip:obj_spaceShip
+    3300006: pCube1
+    3300008: pCube2
     4300000: fattyFare_spaceShip:obj_chair
     4300002: fattyFare_spaceShip:obj_pilot
     4300004: fattyFare_spaceShip:obj_spaceShip
+    4300006: pCube1
+    4300008: pCube2
   materials:
     importMaterials: 1
     materialName: 0

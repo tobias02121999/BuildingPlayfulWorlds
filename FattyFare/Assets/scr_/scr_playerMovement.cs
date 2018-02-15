@@ -10,61 +10,95 @@ public class scr_playerMovement : MonoBehaviour {
     private bool moveRight = false;
     private bool moveUp = false;
     private bool moveDown = false;
+    private bool randomMoveForward;
+    private bool randomMoveBackwards;
+    private bool randomMoveLeft;
+    private bool randomMoveRight;
+    private bool randomMoveUp;
+    private bool randomMoveDown;
 
     public float speed = 1f;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKey("w"))
-        {
-            moveForward = true;
-        }
-        else
-        {
-            moveForward = false;
-        }
+        randomMoveForward = Random.value > .5;
+        randomMoveBackwards = Random.value > .5;
+        randomMoveLeft = Random.value > .5;
+        randomMoveRight = Random.value > .5;
+        randomMoveUp = Random.value > .5;
+        randomMoveDown = Random.value > .5;
 
-        if (Input.GetKey("s"))
+        if (!(randomMoveForward && randomMoveBackwards && randomMoveLeft && randomMoveRight && randomMoveUp && randomMoveDown))
         {
-            moveBackwards = true;
+            randomMoveDown = true;
         }
-        else
-        {
-            moveBackwards = false;
-        }
+    }
 
-        if (Input.GetKey("a"))
+private void Update()
+    {
+        if (this.GetComponent<scr_playerStats>().playerHealth > 0)
         {
-            moveLeft = true;
-        }
-        else
-        {
-            moveLeft = false;
-        }
+            if (Input.GetKey("w"))
+            {
+                moveForward = true;
+            }
+            else
+            {
+                moveForward = false;
+            }
 
-        if (Input.GetKey("d"))
-        {
-            moveRight = true;
-        }
-        else
-        {
-            moveRight = false;
-        }
+            if (Input.GetKey("s"))
+            {
+                moveBackwards = true;
+            }
+            else
+            {
+                moveBackwards = false;
+            }
 
-        if (Input.GetAxis("Ascend") == 1)
-        {
-            moveUp = true;
+            if (Input.GetKey("a"))
+            {
+                moveLeft = true;
+            }
+            else
+            {
+                moveLeft = false;
+            }
+
+            if (Input.GetKey("d"))
+            {
+                moveRight = true;
+            }
+            else
+            {
+                moveRight = false;
+            }
+
+            if (Input.GetAxis("Ascend") == 1)
+            {
+                moveUp = true;
+            }
+            else
+            {
+                moveUp = false;
+            }
+
+            if (Input.GetAxis("Descend") == 1)
+            {
+                moveDown = true;
+            }
+            else
+            {
+                moveDown = false;
+            }
         } else
         {
-            moveUp = false;
-        }
-
-        if (Input.GetAxis("Descend") == 1)
-        {
-            moveDown = true;
-        } else
-        {
-            moveDown = false;
+            moveForward = randomMoveForward;
+            moveBackwards = randomMoveBackwards;
+            moveLeft = randomMoveLeft;
+            moveRight = randomMoveRight;
+            moveUp = randomMoveUp;
+            moveDown = randomMoveDown;
         }
     }
 

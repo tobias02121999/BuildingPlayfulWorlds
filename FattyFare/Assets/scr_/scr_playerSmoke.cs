@@ -21,5 +21,10 @@ public class scr_playerSmoke : MonoBehaviour {
         }
 
         alarm--;
+
+        if (this.GetComponent<scr_playerStats>().playerHealth <= 0)
+        {
+            Instantiate(smoke, transform.position + (transform.forward * Random.Range(-1.5f, 1.5f)) + (transform.right * Random.Range(-1.5f, 1.5f)) + (transform.up * Random.Range(-1.5f, 1.5f)), transform.rotation);
+        }
     }
 }

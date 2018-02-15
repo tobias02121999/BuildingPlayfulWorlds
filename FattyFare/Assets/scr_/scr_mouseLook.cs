@@ -7,20 +7,26 @@ public class scr_mouseLook : MonoBehaviour
     public float speedH = 2.0f;
     public float speedV = 2.0f;
     public float speedR = 2.0f;
-    public float playerHealth = 1.0f;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     private float roll = 0.0f;
+    private float randomYaw;
+    private float randomPitch;
+    private float randomRoll;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-    }
+
+        randomYaw = Random.Range(-4f, 4f);
+        randomPitch = Random.Range(-4f, 4f);
+        randomRoll = Random.Range(-4f, 4f);
+}
 
     private void Update()
     {
-        if (playerHealth > 0)
+        if (this.GetComponent<scr_playerStats>().playerHealth > 0)
         {
             yaw = speedH * Input.GetAxis("Mouse X");
             pitch = -(speedV * Input.GetAxis("Mouse Y"));
@@ -41,9 +47,9 @@ public class scr_mouseLook : MonoBehaviour
             }
         } else
         {
-            yaw += Random.Range(-5f, 5f);
-            pitch += Random.Range(-5f, 5f);
-            roll += Random.Range(-5f, 5f);
+            yaw = randomYaw;
+            pitch = randomPitch;
+            roll = randomRoll;
         }
 
         transform.Rotate(pitch, yaw, roll);

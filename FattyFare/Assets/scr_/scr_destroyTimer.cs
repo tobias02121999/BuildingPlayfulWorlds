@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_smokeDestroy : MonoBehaviour {
+public class scr_destroyTimer : MonoBehaviour {
 
     public int timer = 100;
 
