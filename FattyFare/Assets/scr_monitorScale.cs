@@ -14,7 +14,7 @@ public class scr_monitorScale : MonoBehaviour {
 
 	void Update ()
     {
-	    if (Input.GetKeyDown(KeyCode.LeftAlt))
+	    if (Input.GetKeyDown("r"))
         {
             activated = !activated;
         }

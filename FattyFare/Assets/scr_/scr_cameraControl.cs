@@ -8,6 +8,7 @@ public class scr_cameraControl : MonoBehaviour {
     public Vector3 positionCamera1;
     public Vector3 positionCamera2;
     public float movementSpeed = 1f;
+    public Camera switchCamera;
 
     private Vector3 targetPositionVector;
     private Vector3 targetRotationVector;
@@ -54,5 +55,11 @@ public class scr_cameraControl : MonoBehaviour {
         }
 
         transform.position = Vector3.MoveTowards(transform.position, targetPositionVector, movementSpeed * Vector3.Distance(transform.position, targetPositionVector));
+
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            switchCamera.enabled = true;
+            this.GetComponent<Camera>().enabled = false;
+        }
     }
 }

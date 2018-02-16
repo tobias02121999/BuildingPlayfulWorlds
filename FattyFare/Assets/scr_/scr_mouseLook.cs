@@ -52,6 +52,9 @@ public class scr_mouseLook : MonoBehaviour
             roll = randomRoll;
         }
 
-        transform.Rotate(pitch, yaw, roll);
+        if (!Input.GetKey(KeyCode.LeftAlt))
+        {
+            transform.Rotate(pitch, yaw, roll);
+        }
     }
 }
